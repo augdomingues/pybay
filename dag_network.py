@@ -4,7 +4,7 @@ import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import pandas as pd
 
-class pybay:
+class dag_network:
 
     def __init__(self):
         self.G = nx.DiGraph()
