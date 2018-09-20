@@ -2,7 +2,7 @@ import re
 import matplotlib.pyplot as plt
 import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
-import pandas as pd
+
 
 class dag_network:
 
@@ -75,9 +75,9 @@ class dag_network:
 
     def model_to_network(self, model):
         self.modelstring = model
-        pieces = re.findall("\[.*?\]", model) #TODO validate this
+        pieces = re.findall("\[.*?\]", model) # TODO validate this
         for piece in pieces:
-            piece = piece.replace("[","").replace("]","")
+            piece = piece.replace("[", "").replace("]", "")
 
             # Simple parent, never a child
             if len(piece) == 1:
@@ -143,7 +143,7 @@ class dag_network:
             print("{}   {}".format(fr, to))
 
 if __name__ == "__main__":
-    a = pybay()
+    a = dag_network()
     a.graph_to_network(["A", "S", "E", "O", "R", "T"])
     print(a.modelstring)
     a.add_edge("A", "E")
@@ -154,5 +154,5 @@ if __name__ == "__main__":
     a.add_edge("R", "T")
     print(a.modelstring)
 
-    b = pybay()
+    b = dag_network()
     b.model_to_network("[A][S][E|A:S][O|E][R|E][T|O:R]")
